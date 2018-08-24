@@ -39,15 +39,15 @@ public class ListCommand implements CommandExecutor
         {
             Text.Builder itemsToShow = Text.builder();
 
-            itemsToShow.append(Text.of(TextColors.GREEN, "Container's name: ", TextColors.YELLOW, refillableContainer.getName() + "\n"));
-            itemsToShow.append(Text.of(TextColors.GREEN, "Items in inventory: " + "\n"));
+            itemsToShow.append(Text.of(TextColors.GREEN, "箱子名称: ", TextColors.YELLOW, refillableContainer.getName() + "\n"));
+            itemsToShow.append(Text.of(TextColors.GREEN, "箱子内的物品: " + "\n"));
             refillableContainer.getItems().forEach(x-> itemsToShow.append(Text.of(TextColors.YELLOW, x.getItem().getType().getName(), TextColors.RESET, " x" + x.getItem().getQuantity() + "\n")));
-            itemsToShow.append(Text.of("\n", TextColors.GREEN, "One item at time: ", TextColors.WHITE,  refillableContainer.isOneItemAtTime(), "\n"));
-            itemsToShow.append(Text.of(TextColors.GREEN, "Replace existing items: ", TextColors.WHITE, refillableContainer.shouldReplaceExistingItems(), "\n"));
-            itemsToShow.append(Text.of(TextColors.GREEN, "Hidden if no items: ", TextColors.WHITE, refillableContainer.shouldBeHiddenIfNoItems(), "\n"));
-            itemsToShow.append(Text.of(TextColors.GREEN, "Hiding block: ", TextColors.WHITE, refillableContainer.getHidingBlock(), "\n"));
-            itemsToShow.append(Text.of("\n", TextColors.BLUE, TextStyles.BOLD, "Container cooldown: ", refillableContainer.getRestoreTime(),"s\n"));
-            itemsToShow.append(Text.of("\n", TextColors.RED, TextStyles.ITALIC, "Click to teleport..."));
+            itemsToShow.append(Text.of("\n", TextColors.GREEN, "一次一件物品: ", TextColors.WHITE,  refillableContainer.isOneItemAtTime(), "\n"));
+            itemsToShow.append(Text.of(TextColors.GREEN, "重放已存在的物品: ", TextColors.WHITE, refillableContainer.shouldReplaceExistingItems(), "\n"));
+            itemsToShow.append(Text.of(TextColors.GREEN, "如果无物品就隐藏: ", TextColors.WHITE, refillableContainer.shouldBeHiddenIfNoItems(), "\n"));
+            itemsToShow.append(Text.of(TextColors.GREEN, "隐藏的方块: ", TextColors.WHITE, refillableContainer.getHidingBlock(), "\n"));
+            itemsToShow.append(Text.of("\n", TextColors.BLUE, TextStyles.BOLD, "箱子冷却时间: ", refillableContainer.getRestoreTime(),"s\n"));
+            itemsToShow.append(Text.of("\n", TextColors.RED, TextStyles.ITALIC, "点我传送..."));
 
 //            Text chestText = Text.builder()
 //                    .append(Text.of(TextColors.DARK_GREEN, "Container at ", TextColors.YELLOW, refillableContainer.getContainerLocation().getBlockPosition().toString()))
@@ -57,12 +57,12 @@ public class ListCommand implements CommandExecutor
 
             Text.Builder chestName = Text.builder();
             if(refillableContainer.getName().equals(""))
-                chestName.append(Text.of("Not named container"));
+                chestName.append(Text.of("未命名的箱子"));
             else
-                chestName.append(Text.of("Container ", TextColors.YELLOW, refillableContainer.getName()));
+                chestName.append(Text.of("箱子 ", TextColors.YELLOW, refillableContainer.getName()));
 
             Text chestText = Text.builder()
-                    .append(Text.of(TextColors.YELLOW, " - ", TextColors.DARK_GREEN, chestName.build(), " at location ", TextColors.YELLOW, refillableContainer.getContainerLocation().getBlockPosition().toString()))
+                    .append(Text.of(TextColors.YELLOW, " - ", TextColors.DARK_GREEN, chestName.build(), " 位于 ", TextColors.YELLOW, refillableContainer.getContainerLocation().getBlockPosition().toString()))
                     .onHover(TextActions.showText(itemsToShow.build()))
                     .onClick(TextActions.executeCallback(teleportToChest(source, refillableContainer.getContainerLocation().getBlockPosition())))
                     .build();
@@ -71,7 +71,7 @@ public class ListCommand implements CommandExecutor
         }
 
         PaginationService paginationService = Sponge.getServiceManager().provide(PaginationService.class).get();
-        PaginationList.Builder paginationBuilder = paginationService.builder().title(Text.of(TextColors.GOLD, "List of Refilling Containers")).padding(Text.of(TextColors.DARK_GREEN, "-")).contents(helpList).linesPerPage(10);
+        PaginationList.Builder paginationBuilder = paginationService.builder().title(Text.of(TextColors.GOLD, "重装箱子列表")).padding(Text.of(TextColors.DARK_GREEN, "-")).contents(helpList).linesPerPage(10);
         paginationBuilder.sendTo(source);
 
 
@@ -88,7 +88,7 @@ public class ListCommand implements CommandExecutor
                 Player player = (Player)source;
 
                 player.setLocation(new Location<World>(player.getWorld(), blockPosition));
-                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "You were teleported to the selected container!"));
+                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "你已经被传送至选择的箱子!"));
             }
         };
     }

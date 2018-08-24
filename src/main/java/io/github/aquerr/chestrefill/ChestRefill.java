@@ -75,7 +75,7 @@ public class ChestRefill
         {
             Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "一个新的版本 ", TextColors.YELLOW, PluginInfo.Name, TextColors.RED, " 可用!"));
         }
-        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN,"汉化：月光兔"));
+        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN,"汉化：月光兔<银河系气功协会>"));
 
     }
 

@@ -54,7 +54,7 @@ public class HelpCommand implements CommandExecutor
                             .append(Text.of(TextColors.WHITE, " - " + commandSpec.getShortDescription(source).get().toPlain() + "\n"))
                             .build())
                     .append(Text.builder()
-                            .append(Text.of(TextColors.GRAY, "Usage: /cr " + aliases.toString().replace("[","").replace("]","") + " " + commandSpec.getUsage(source).toPlain()))
+                            .append(Text.of(TextColors.GRAY, "请使用: /cr " + aliases.toString().replace("[","").replace("]","") + " " + commandSpec.getUsage(source).toPlain()))
                             .build())
                     .build();
 

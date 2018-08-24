@@ -22,7 +22,7 @@ public class CreateCommand implements CommandExecutor
     @Override
     public CommandResult execute(CommandSource source, CommandContext context) throws CommandException
     {
-        Optional<String> optionalName = context.getOne(Text.of("chest name"));
+        Optional<String> optionalName = context.getOne(Text.of("箱子名称"));
 
         if (source instanceof Player)
         {
@@ -34,21 +34,21 @@ public class CreateCommand implements CommandExecutor
                 {
                     optionalName.ifPresent(s -> ChestRefill.PlayerChestName.put(player.getUniqueId(), s));
                     ChestRefill.PlayersSelectionMode.replace(player.getUniqueId(), SelectionMode.CREATE);
-                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned on creation mode"));
+                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "打开箱子创造模式"));
                 }
                 else
                 {
                     ChestRefill.PlayerChestName.remove(player.getUniqueId());
 
                     ChestRefill.PlayersSelectionMode.remove(player.getUniqueId());
-                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned off creation mode"));
+                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "关闭箱子创造模式"));
                 }
             }
             else
             {
                 optionalName.ifPresent(s -> ChestRefill.PlayerChestName.put(player.getUniqueId(), s));
                 ChestRefill.PlayersSelectionMode.put(player.getUniqueId(), SelectionMode.CREATE);
-                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned on creation mode"));
+                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "打开箱子创造模式"));
             }
         }
 

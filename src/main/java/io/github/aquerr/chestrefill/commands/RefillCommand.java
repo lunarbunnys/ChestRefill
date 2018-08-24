@@ -22,7 +22,7 @@ public class RefillCommand implements CommandExecutor
     @Override
     public CommandResult execute(CommandSource source, CommandContext args) throws CommandException
     {
-        Optional<String> optionalChestName = args.getOne(Text.of("chest name"));
+        Optional<String> optionalChestName = args.getOne(Text.of("箱子名称"));
 
         if (optionalChestName.isPresent())
         {
@@ -36,9 +36,9 @@ public class RefillCommand implements CommandExecutor
                 {
                     boolean didSucceed = ContainerManager.refillContainer(refillableContainer.getContainerLocation());
                     if(didSucceed)
-                        source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Successfully refilled the container!"));
+                        source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "成功重装指定箱子!"));
                     else
-                        source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "Could not refill the container!"));
+                        source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "无法重装指定的箱子!"));
                     break;
                 }
             }

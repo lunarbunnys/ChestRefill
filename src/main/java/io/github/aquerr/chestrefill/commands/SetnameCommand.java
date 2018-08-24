@@ -19,17 +19,17 @@ public class SetnameCommand implements CommandExecutor
     @Override
     public CommandResult execute(CommandSource source, CommandContext context) throws CommandException
     {
-        Optional<String> optionalName = context.getOne(Text.of("name"));
+        Optional<String> optionalName = context.getOne(Text.of("箱子名称"));
 
         if(!(source instanceof Player))
         {
-            source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "Only in-game players can use this command!"));
+            source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "仅玩家可使用该命令!"));
             return CommandResult.success();
         }
 
         if(!optionalName.isPresent())
         {
-            source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "You need to specify a name!"));
+            source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "你需要指定一个名称!"));
             return CommandResult.success();
         }
 
@@ -42,20 +42,20 @@ public class SetnameCommand implements CommandExecutor
             {
                 ChestRefill.PlayersSelectionMode.replace(player.getUniqueId(), SelectionMode.SETNAME);
                 ChestRefill.PlayerChestName.put(player.getUniqueId(), containerName);
-                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned on setname mode"));
+                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "开启重命名模式"));
             }
             else
             {
                 ChestRefill.PlayersSelectionMode.remove(player.getUniqueId());
                 ChestRefill.PlayerChestName.remove(player.getUniqueId());
-                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned off setname mode"));
+                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "关闭重命名模式"));
             }
         }
         else
         {
             ChestRefill.PlayersSelectionMode.put(player.getUniqueId(), SelectionMode.SETNAME);
             ChestRefill.PlayerChestName.put(player.getUniqueId(), containerName);
-            player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned on setname mode"));
+            player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "开启重命名模式"));
         }
 
         return CommandResult.success();

@@ -25,8 +25,8 @@ public class RefillAllCommand implements CommandExecutor
         }
 
         if(didSucceed)
-            source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Successfully refilled all containers!"));
-        else source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "Some containers couldn't be refilled."));
+            source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "成功重装所有箱子!"));
+        else source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "一些箱子无法被重装."));
 
         return CommandResult.success();
     }

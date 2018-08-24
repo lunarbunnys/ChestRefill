@@ -29,18 +29,18 @@ public class UpdateCommand implements CommandExecutor
                 if (SelectionMode.UPDATE != ChestRefill.PlayersSelectionMode.get(player.getUniqueId()))
                 {
                     ChestRefill.PlayersSelectionMode.replace(player.getUniqueId(), SelectionMode.UPDATE);
-                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned on update mode"));
+                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "开启箱子更新模式"));
                 }
                 else
                 {
                     ChestRefill.PlayersSelectionMode.remove(player.getUniqueId());
-                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned off update mode"));
+                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "关闭箱子更新模式"));
                 }
             }
             else
             {
                 ChestRefill.PlayersSelectionMode.put(player.getUniqueId(), SelectionMode.UPDATE);
-                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned on update mode"));
+                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "开启箱子更新模式"));
             }
         }
 

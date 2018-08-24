@@ -29,18 +29,18 @@ public class RemoveCommand implements CommandExecutor
                 if (SelectionMode.REMOVE != ChestRefill.PlayersSelectionMode.get(player.getUniqueId()))
                 {
                     ChestRefill.PlayersSelectionMode.replace(player.getUniqueId(), SelectionMode.REMOVE);
-                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned on removal mode"));
+                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "开启箱子移除模式"));
                 }
                 else
                 {
                     ChestRefill.PlayersSelectionMode.remove(player.getUniqueId());
-                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned off removal mode"));
+                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "关闭箱子移除模式"));
                 }
             }
             else
             {
                 ChestRefill.PlayersSelectionMode.put(player.getUniqueId(), SelectionMode.REMOVE);
-                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned on removal mode"));
+                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "开启箱子移除模式"));
             }
         }
 

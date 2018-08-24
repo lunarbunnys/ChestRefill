@@ -23,7 +23,7 @@ public class TimeCommand implements CommandExecutor
     @Override
     public CommandResult execute(CommandSource source, CommandContext context) throws CommandException
     {
-        Optional<Integer> optionalTime = context.<Integer>getOne(Text.of("time"));
+        Optional<Integer> optionalTime = context.<Integer>getOne(Text.of("时间"));
 
         if (source instanceof Player)
         {
@@ -34,18 +34,18 @@ public class TimeCommand implements CommandExecutor
                 if (SelectionMode.TIME != ChestRefill.PlayersSelectionMode.get(player.getUniqueId()))
                 {
                     ChestRefill.PlayersSelectionMode.replace(player.getUniqueId(), SelectionMode.TIME);
-                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned on time mode"));
+                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "开启时间设置模式"));
                 }
                 else
                 {
                     ChestRefill.PlayersSelectionMode.remove(player.getUniqueId());
-                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned off time mode"));
+                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "关闭时间设置模式"));
                 }
             }
             else
             {
                 ChestRefill.PlayersSelectionMode.put(player.getUniqueId(), SelectionMode.TIME);
-                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Turned on time mode"));
+                player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "开启时间设置模式"));
             }
 
             if (ChestRefill.PlayersSelectionMode.containsKey(player.getUniqueId())

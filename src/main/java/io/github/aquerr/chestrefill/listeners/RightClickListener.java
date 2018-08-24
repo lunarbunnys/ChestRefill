@@ -45,13 +45,13 @@ public class RightClickListener
                                     boolean didSucceed = ContainerManager.addRefillableContainer(refillableContainer);
                                     if (didSucceed)
                                     {
-                                        player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "Successfully created a refilling container!"));
+                                        player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "成功创建了一个重装箱子!"));
                                     }
-                                    else player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "Something went wrong..."));
+                                    else player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "- -什么东西出了错误..."));
                                 }
                                 else
                                 {
-                                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "This container is already marked as a refilling container!"));
+                                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "这个箱子已经是一个重装箱子了!"));
                                 }
 
                                 //Turns off selection mode. It will be more safe to turn it off and let the player turn it on again.
@@ -66,13 +66,13 @@ public class RightClickListener
 
                                     if (didSucceed)
                                     {
-                                        player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "Successfully removed a refilling container!"));
+                                        player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "成功删除一个重装箱子!"));
                                     }
-                                    else player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "Something went wrong..."));
+                                    else player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "- -什么东西出了错误..."));
                                 }
                                 else
                                 {
-                                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "This is not a refillable container!"));
+                                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "这不是一个重装箱子!"));
                                 }
 
                                 //Turn off selection mode. It will be more safe to turn it off and let the player turn it on again.
@@ -87,13 +87,13 @@ public class RightClickListener
 
                                     if (didSucceed)
                                     {
-                                        player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "Successfully updated a refilling container!"));
+                                        player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "成功更新一个重装箱子!"));
                                     }
-                                    else player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "Something went wrong..."));
+                                    else player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "- -什么东西出了错误..."));
                                 }
                                 else
                                 {
-                                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "This is not a refillable container!"));
+                                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "这不是一个重装箱子!"));
                                 }
 
                                 //Turn off selection mode. It will be more safe to turn it off and let the player turn it on again.
@@ -112,19 +112,19 @@ public class RightClickListener
 
                                         if (didSucceed)
                                         {
-                                            player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "Successfully updated container's refill time!"));
+                                            player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "成功更新这个箱子的重装时间!"));
                                         }
-                                        else player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "Something went wrong..."));
+                                        else player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "- -什么东西出了错误..."));
                                     }
                                     else
                                     {
                                         RefillableContainer chestToView = ContainerManager.getRefillableContainers().stream().filter(x->x.getContainerLocation().equals(refillableContainer.getContainerLocation())).findFirst().get();
-                                        player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "This container refills every ", TextColors.GREEN, chestToView.getRestoreTime(), TextColors.YELLOW, " seconds"));
+                                        player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "这个箱子每 ", TextColors.GREEN, chestToView.getRestoreTime(), TextColors.YELLOW, " 秒重装一次"));
                                     }
                                 }
                                 else
                                 {
-                                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "This is not a refillable container!"));
+                                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "这不是一个重装箱子!"));
                                 }
 
                                 //Turn off selection mode. It will be more safe to turn it off and let the player turn it on again.
@@ -140,13 +140,13 @@ public class RightClickListener
 
                                     if (didSucceed)
                                     {
-                                        player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "Successfully updated a refilling container!"));
+                                        player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "成功更新一个重装箱子!"));
                                     }
-                                    else player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "Something went wrong..."));
+                                    else player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "- -什么东西出了错误..."));
                                 }
                                 else
                                 {
-                                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "This is not a refillable container!"));
+                                    player.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "这不是一个重装箱子!"));
                                 }
 
                                 //Turn off selection mode. It will be more safe to turn it off and let the player turn it on again.
