@@ -56,25 +56,26 @@ public class ChestRefill
 
         ContainerManager.setupContainerManager(_configDir);
 
-        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Chest Refill is loading... :D"));
-        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Initializing commands..."));
+        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Chest Refill 正在加载中... :D"));
+        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "初始化指令..."));
 
         initCommands();
 
-        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Initializing listeners..."));
+        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "初始化监听器..."));
 
         initListeners();
 
-        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Chest Refill is ready!"));
+        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.YELLOW, "Chest Refill 已加载!"));
 
         if (VersionChecker.isLatest(PluginInfo.Version))
         {
-            Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "You are using the latest version!"));
+            Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "你正在使用最新版本!"));
         }
         else
         {
-            Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "An update for ", TextColors.YELLOW, PluginInfo.Name, TextColors.RED, " is available online!"));
+            Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.RED, "一个新的版本 ", TextColors.YELLOW, PluginInfo.Name, TextColors.RED, " 可用!"));
         }
+        Sponge.getServer().getConsole().sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN,"汉化：月光兔"));
 
     }
 
@@ -90,73 +91,73 @@ public class ChestRefill
 
         //Help Command
         Subcommands.put(Arrays.asList("help"), CommandSpec.builder()
-            .description(Text.of("Displays all available commands"))
+            .description(Text.of("显示所有可用的命令"))
             .permission(PluginPermissions.HELP_COMMAND)
             .executor(new HelpCommand())
             .build());
 
         //Create Command
         Subcommands.put(Arrays.asList("c", "create"), CommandSpec.builder()
-            .description(Text.of("Toggles chest creation mode"))
+            .description(Text.of("切换至箱子创建模式"))
             .permission(PluginPermissions.CREATE_COMMAND)
-            .arguments(GenericArguments.optional(GenericArguments.string(Text.of("chest name"))))
+            .arguments(GenericArguments.optional(GenericArguments.string(Text.of("箱子名称"))))
             .executor(new CreateCommand())
             .build());
 
         //Remove Command
         Subcommands.put(Arrays.asList("r", "remove"), CommandSpec.builder()
-            .description(Text.of("Toggles chest removal mode"))
+            .description(Text.of("切换至箱子移除模式"))
             .permission(PluginPermissions.REMOVE_COMMAND)
             .executor(new RemoveCommand())
             .build());
 
         //Update Command
         Subcommands.put(Arrays.asList("u", "update"), CommandSpec.builder()
-            .description(Text.of("Toggles chest update mode"))
+            .description(Text.of("切换至箱子更新模式"))
             .permission(PluginPermissions.UPDATE_COMMAND)
             .executor(new UpdateCommand())
             .build());
 
         //Time Command
         Subcommands.put(Arrays.asList("t", "time"), CommandSpec.builder()
-            .description(Text.of("Change chest's refill time"))
+            .description(Text.of("更改箱子重装时间"))
             .permission(PluginPermissions.TIME_COMMAND)
-            .arguments(GenericArguments.optional(GenericArguments.integer(Text.of("time"))))
+            .arguments(GenericArguments.optional(GenericArguments.integer(Text.of("时间"))))
             .executor(new TimeCommand())
             .build());
 
         //List Command
         Subcommands.put(Arrays.asList("l","list"), CommandSpec.builder()
-                .description(Text.of("Show all refilling chests"))
+                .description(Text.of("显示所有可重装的箱子"))
                 .permission(PluginPermissions.LIST_COMMAND)
                 .executor(new ListCommand())
                 .build());
 
         //Refill Command
         Subcommands.put(Arrays.asList("refill"), CommandSpec.builder()
-                .description(Text.of("Force refill a specific container"))
+                .description(Text.of("强制重装一个箱子"))
                 .permission(PluginPermissions.REFILL_COMMAND)
-                .arguments(new ContainerNameArgument(Text.of("chest name")))
+                .arguments(new ContainerNameArgument(Text.of("箱子名称")))
                 .executor(new RefillCommand())
                 .build());
 
         //RefillAll Command
         Subcommands.put(Arrays.asList("refillall"), CommandSpec.builder()
-                .description(Text.of("Force refill all containers"))
+                .description(Text.of("强制重装所有箱子"))
                 .permission(PluginPermissions.REFILLALL_COMMAND)
                 .executor(new RefillAllCommand())
                 .build());
 
         Subcommands.put(Arrays.asList("setname"), CommandSpec.builder()
-                .description(Text.of("Set name for a refillable container"))
+                .description(Text.of("为一个可重装的箱子设置名称"))
                 .permission(PluginPermissions.SETNAME_COMMAND)
-                .arguments(GenericArguments.optional(GenericArguments.string(Text.of("name"))))
+                .arguments(GenericArguments.optional(GenericArguments.string(Text.of("名称"))))
                 .executor(new SetnameCommand())
                 .build());
 
         //Build all commands
         CommandSpec mainCommand = CommandSpec.builder()
-                .description(Text.of("Displays all available commands"))
+                .description(Text.of("显示所有可用的命令"))
                 .executor(new HelpCommand())
                 .children(Subcommands)
                 .build();
